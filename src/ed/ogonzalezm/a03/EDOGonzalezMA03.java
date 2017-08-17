@@ -20,6 +20,11 @@ public class EDOGonzalezMA03 {
         os.setV(os.RandomV(10));
         os.showF(os.Fetch(20));
         os.showV();
+        Binario ob = new Binario();
+        ob.setV(ob.RandomV(9));
+        ob.seleccion();
+        ob.showF(ob.Fetch(5));
+        ob.showV();
     }
     
 }
