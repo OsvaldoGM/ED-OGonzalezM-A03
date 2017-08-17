@@ -9,7 +9,9 @@ package ed.ogonzalezm.a03;
  *
  * @author HONORIO ZAIBACK
  */
-public class Binario extends FetchClass{
+public class Binario extends FetchClass implements Ordenamientos{
+    
+   
     
     @Override
     public int Fetch(int num){ 
@@ -35,6 +37,20 @@ public class Binario extends FetchClass{
    return -1;
  
  }
+
+    @Override
+    public void seleccion() {
+        int menor, auxiliar;
+        for(int i=0; i<vector.length;i++){
+            menor = i;
+            for(int j=i+1; i<vector.length ; j++){
+                menor = j;
+            }
+            auxiliar = vector[i];
+            vector[i] = vector[menor];
+            vector[menor] = auxiliar;
+        }
+    }
  
     
 }
