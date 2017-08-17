@@ -79,7 +79,8 @@ class secuencial: FetchClass{
     override func fetch(n: Int) -> Int {
         let count:Int = self.vector.count-1
         for i in 0...count{
-            if(self.vector[i]==n){return i}
+            if(self.vector[i]==n)
+            {return i}
         }
         return -1
     }
