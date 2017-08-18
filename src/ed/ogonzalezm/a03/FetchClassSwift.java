@@ -27,7 +27,7 @@ class FetchClassSwift {
     func randomV(n:Int)->[Int]{
         var v:[Int] = [Int]()
         for _ in 0...(n-1) {
-            v.append(Int(arc4random_uniform(200)))
+            v.append(Int(arc4random_uniform(10)))
         }
         return v
     }
@@ -54,7 +54,11 @@ class FetchClassSwift {
     }
 }
 
-class binario: FetchClass{
+protocol Sort(){
+    func sort()
+}
+
+class binario: FetchClass, Sort{
     override func fetch(n: Int) -> Int {
         var centro: Int = 0
         var inicio: Int = 0
@@ -73,11 +77,28 @@ class binario: FetchClass{
         }
         return -1
     }
+    
+        func sort(){
+            var menor = 0
+            var auxiliar = 0
+            for index in 0...vector.count-1{
+            menor = index
+                for index2 in stride(from: index+1, to: vector.count-1, by:1){
+                    if(vector[index2<vector[index]]){
+                        menor = index2
+                    }
+            }
+                auxiliar = vector[index]
+                vector[index] = vector[menor]
+                vector[menor] = auxiliar
+        }
+                
+}
 }
 
 class secuencial: FetchClass{
     override func fetch(n: Int) -> Int {
-        let count:Int = self.vector.count-1
+        let count : Int = self.vector.count-1
         for i in 0...count{
             if(self.vector[i]==n)
             {return i}
@@ -87,8 +108,14 @@ class secuencial: FetchClass{
 }
 
 var test: secuencial = secuencial()
-test.setV(v: test.randomV(n: 400))
+test.setV(v: test.randomV(n: 40))
 test.showV()
-test.showF(n: test.fetch(n: 50))
+test.showF(n: test.fetch(n: 20))
+
+var test: binario = binario()
+test.setV(v: test.randomV(n: 40))
+test.sort()
+test.showV()
+test.showF(n: test.fetch(n: 20))
     
 }
