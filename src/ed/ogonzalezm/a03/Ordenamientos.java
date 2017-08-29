@@ -12,4 +12,12 @@ package ed.ogonzalezm.a03;
 public interface Ordenamientos {
     
     public abstract void seleccion();
+    
+    public abstract void insercion();
+    
+    public abstract void bubble();
+    
+    public abstract void quickSort(int izquierda, int derecha);
+    
+    public abstract void mergeSort(int izquierda, int derecha);
 }
