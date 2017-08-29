@@ -56,6 +56,9 @@ class FetchClassSwift {
 
 protocol Sort(){
     func sort()
+    func insertion()
+    func bubble()
+    func mergeSort()
 }
 
 class binario: FetchClass, Sort{
@@ -92,8 +95,68 @@ class binario: FetchClass, Sort{
                 vector[index] = vector[menor]
                 vector[menor] = auxiliar
         }
-                
 }
+        func insertion(){
+            var auxiliar
+            for index in 1...vector.count-1{
+            auxilar = index;
+            index2 = index -1
+                while vector[index2] >auxiliar && index2>=0
+                        vector[index2+1] = vector[index]
+                                index2--
+        }
+            vector[index2+1] = auxiliar
+        }
+         
+        func bubble(){
+            for_in strinde(from:1, to:vector.count-1, by:1)
+                for index in stride(form:0, to:vector.count-2, by:1)
+                    if(vector[index]>vector[index+1]){
+                        flip(i: index, j: (index+1))
+                    }
+    }
+        
+        
+        func mergeSort(array:[Int]->[Int]){
+            if(array.count<=1){
+                return array
+            }
+            var izquierda: [Int]=[Int]()
+            var derecha: [Int]=[Int]()
+            for index in stride (from:0, to: (array.count-1), by:1){
+                if(index<(array.count/2)){
+                    izquierda.append(array[index])
+                } else {
+                    derecha.append(array[index])
+                }
+            }
+            izquierda = mergeSort(array: izquierda)
+            derecha = mergeSort(array: derecha)
+            return merge(izquierda: izquierda, derecha: derecha)
+    }
+        
+        func merge(izquierda: inout[Int], derecha: inout[Int])->[Int]{
+            var result:[Int] = [Int]()
+            while((!izquierda.isEmpty)&&(!derecha.isEmpty)){
+                if(izquierda.first!<= derecha.first!){
+                    result.append(izquierda.first!)
+                    izquierda.removeFirst()
+                }else{
+                    result.append(derecha.first!)   
+                    derecha.removeFirst()    
+                    }
+            }
+            while(!izquierda.isEmpty){
+                result.append(izquierda.first!)
+                izquierda.removeFirst()
+            }
+            while(!derecha.isEmpty){
+                result.append(derecha.first!)
+                derecha.removeFirst()
+            }
+            return result
+    }
+        
 }
 
 class secuencial: FetchClass{
